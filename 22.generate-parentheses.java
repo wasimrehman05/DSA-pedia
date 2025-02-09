@@ -10,25 +10,25 @@ import java.util.*;
 
 class Solution {
     public List<String> generateParenthesis(int n) {
-        List<String> output = new ArrayList<>();
+        List<String> output = new ArrayList<String>();
 
-        dfs(0, 0, "", n, output);
+        dfs(0, 0, "", output, n);
 
         return output;
     }
 
-    private void dfs(int open, int close, String str, int n, List<String> output) {
-        if (open == close && open + close == 2 * n) {
+    private void dfs(int open, int close, String str, List<String> output, int n) {
+        if (open == n && close == n) {
             output.add(str);
             return;
         }
 
         if (open < n) {
-            dfs(open + 1, close, str + "(", n, output);
+            dfs(open + 1, close, str+"(", output, n);
         }
 
         if (close < open) {
-            dfs(open, close + 1, str + ")", n, output);
+            dfs(open, close + 1, str+")", output, n);
         }
     }
 }
